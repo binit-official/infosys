@@ -1218,7 +1218,6 @@ String key = sb.toString();</code></pre>
                 <p><strong>Happy Number (202):</strong> Cycle detection. If sum of squares repeats a number seen before -> Infinite Loop -> Not Happy. Use HashSet to track seen numbers.</p>
             </div>
         </div>
-
     </div>
 
     <div id="day4-technique" class="section-content">
@@ -1237,7 +1236,6 @@ String key = sb.toString();</code></pre>
         </div>
 
         <div class="tech-grid">
-            
             <div class="tech-card">
                 <div class="tech-head">Frequency Pattern</div>
                 <span class="tech-sub">First Unique Char</span>
@@ -1333,199 +1331,6 @@ String key = sb.toString();</code></pre>
                 </div>
                 <div class="tech-steps">Build Map. Use <code>getOrDefault</code>. Foundation of Day 4.</div>
             </div>
-
-        </div>
-        
-        <div class="concept-card" style="margin-top:30px;">
-            <div class="concept-title">PATTERN SUMMARY TABLE</div>
-            <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
-                <tr style="background:#f1f5f9; text-align:left;"><th style="padding:10px;">Problem</th><th style="padding:10px;">Pattern</th><th style="padding:10px;">Why</th></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">First Unique Char</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Frequency</td><td>Find first freq=1</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Word Pattern</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">2 HashMaps</td><td>Bijection check</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Intersection</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Set</td><td>Uniqueness + Fast check</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Harmonious Sub</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Freq[x] + Freq[x+1]</td><td>Difference = 1</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Consecutive Seq</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Set + Start Detect</td><td>O(N) logic</td></tr>
-                <tr><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Count XOR K</td><td style="padding:10px; border-bottom:1px solid #e2e8f0;">Prefix XOR + Map</td><td>Reversible XOR</td></tr>
-                <tr><td style="padding:10px;">Happy Number</td><td style="padding:10px;">Set Cycle Detect</td><td>Infinite loop check</td></tr>
-            </table>
-        </div>
-    </div>
-
-   <div id="day4" class="day-module">
-    
-    <div class="day-header">
-        <h1>Day 4: HashMap & Set Mastery</h1>
-        <div class="day-desc">Master O(1) lookups, frequency counting, and cycle detection. If Day 1 was Prefix Sum, Day 4 is where your HashMap brain becomes unstoppable.</div>
-    </div>
-
-    <div class="progress-wrap">
-        <span style="font-weight:600; color:#64748b;">Day 4 Progress:</span>
-        <div class="p-bar-container"><div class="p-fill" id="prog-bar-day4"></div></div>
-        <span class="p-text" id="prog-text-day4">0%</span>
-    </div>
-
-    <div class="mode-tabs">
-        <div class="tab-btn active" onclick="openMode('day4', 'teaching', this)">🔥 Teaching</div>
-        <div class="tab-btn" onclick="openMode('day4', 'technique', this)">🧠 Technique</div>
-        <div class="tab-btn" onclick="openMode('day4', 'template', this)">🛠️ Template</div>
-        <div class="tab-btn" onclick="openMode('day4', 'practice', this)">✅ Practice</div>
-    </div>
-
-    <div id="day4-teaching" class="section-content active">
-        
-        <div class="concept-card">
-            <div class="concept-title">A. THE TRUE THEORY OF HASHMAPS & SETS</div>
-            <div class="concept-body">
-                <p><strong>1. What is a HashMap?</strong> Stores data in <code>Key -> Value</code> pairs. Keys are unique. Internally uses hashing + buckets. Access is <strong>O(1)</strong> average. Use for fast frequency counts, pattern matching, and prefix tracking.</p>
-                <p><strong>2. What is a HashSet?</strong> A HashMap without values. Use for uniqueness, fast O(1) lookups, and detecting duplicates.</p>
-                <div class="highlight">
-                    <strong>Common Operations:</strong><br>
-                    <em>Map:</em> put(k,v), get(k), containsKey(k), getOrDefault(k, def), remove(k).<br>
-                    <em>Set:</em> add(v), contains(v), remove(v), size().
-                </div>
-            </div>
-        </div>
-
-        <div class="concept-card">
-            <div class="concept-title">B. MINDSET FOR HASHMAP PROBLEMS</div>
-            <div class="concept-body">
-                <ul style="padding-left:20px; margin:0;">
-                    <li style="margin-bottom:10px;"><strong>Survival Rule:</strong> If checking "have we seen this before?" → HashMap/Set.</li>
-                    <li style="margin-bottom:10px;"><strong>Frequency Rule:</strong> If problem needs counts → HashMap.</li>
-                    <li style="margin-bottom:10px;"><strong>Sequence Rule:</strong> If checking for longest consecutive sequence → HashSet.</li>
-                    <li><strong>Mapping Rule:</strong> If problem asks for relationships/patterns → HashMap with indices/groups.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="concept-card">
-            <div class="concept-title">C. DEEP CONCEPTUAL BREAKDOWN</div>
-            <div class="concept-body">
-                <p><strong>First Unique Character (387):</strong> Pure frequency problem. Phase 1: Count all. Phase 2: Scan string, find first with count 1. Cannot be done in 1 pass.</p>
-                <p><strong>Word Pattern (290):</strong> Bijection problem. Must use TWO Maps (P->W and W->P) to ensure 1-to-1 mapping. Single map fails if different keys map to same value.</p>
-                <p><strong>Intersection of Arrays (349):</strong> Set problem. Put Array 1 in Set. Iterate Array 2, check if present. Ensures uniqueness and O(1) lookup.</p>
-                <p><strong>Longest Harmonious Subsequence (594):</strong> Frequency based. For every X, check if X+1 exists. Length = <code>freq[x] + freq[x+1]</code>. Order doesn't matter.</p>
-                <p><strong>Longest Consecutive Sequence (128):</strong> Set-based O(N). Key insight: Only start counting sequence if <code>x-1</code> is NOT in set (meaning x is the start).</p>
-                <p><strong>Count Subarrays XOR = K:</strong> Prefix XOR + HashMap. Similar to "Sum = K". <code>Prefix[R] ^ Prefix[L-1] = K</code> means <code>Prefix[L-1] = Prefix[R] ^ K</code>. Count occurrences of required prefix.</p>
-                <p><strong>Happy Number (202):</strong> Cycle detection. If sum of squares repeats a number seen before -> Infinite Loop -> Not Happy. Use HashSet to track seen numbers.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="day4-technique" class="section-content">
-        
-        <div class="concept-card" style="border-left-color:#8b5cf6;">
-            <div class="concept-title" style="color:#7c3aed;">⭐ THE 7 SUPERPOWER RULES</div>
-            <div class="concept-body" style="font-size:0.95rem;">
-                1. <strong>Frequency?</strong> → HashMap or Array.<br>
-                2. <strong>"Have we seen this?"</strong> → HashSet.<br>
-                3. <strong>Pairs/Groups?</strong> → HashMap with Frequency.<br>
-                4. <strong>Consecutive/Chain?</strong> → HashSet start detection.<br>
-                5. <strong>Subarray Sum/XOR?</strong> → Prefix + HashMap.<br>
-                6. <strong>Repeating Numbers?</strong> → HashMap.<br>
-                7. <strong>Cycles/Loops?</strong> → HashSet seen values.
-            </div>
-        </div>
-
-        <div class="tech-grid">
-            
-            <div class="tech-card">
-                <div class="tech-head">Frequency Pattern</div>
-                <span class="tech-sub">First Unique Char</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"First non-repeating"</li>
-                        <li>"Unique character"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Two-pass. 1. Count frequencies. 2. Find first freq=1.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Bijection (2 Maps)</div>
-                <span class="tech-sub">Word Pattern</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Pattern matches words?"</li>
-                        <li>"One-to-one relationship"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Use Map P->W and Map W->P. Check consistency both ways.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Set Membership</div>
-                <span class="tech-sub">Intersection of Arrays</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Common elements"</li>
-                        <li>"Unique intersection"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Insert Arr1 to Set. Check Arr2 against Set.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Freq Pair Count</div>
-                <span class="tech-sub">Longest Harmonious Sub</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Max - Min = 1"</li>
-                        <li>"Subsequence length"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Count freq. Check <code>freq[x] + freq[x+1]</code>.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Set + Start Detection</div>
-                <span class="tech-sub">Longest Consecutive Seq</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Longest consecutive elements"</li>
-                        <li>"O(N) required"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Put all in Set. Only start counting if <code>x-1</code> not in Set.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Prefix XOR + Map</div>
-                <span class="tech-sub">Subarrays with XOR K</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Subarrays with XOR = K"</li>
-                        <li>"Count subarrays satisfying condition"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps"><code>Target = CurrXor ^ K</code>. Add map count of Target.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">Cycle Detection</div>
-                <span class="tech-sub">Happy Number</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Repeating process"</li>
-                        <li>"Detect loop/cycle"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Use HashSet for 'seen' numbers. If seen, loop detected.</div>
-            </div>
-
-            <div class="tech-card">
-                <div class="tech-head">General Freq Map</div>
-                <span class="tech-sub">Foundation Pattern</span>
-                <div class="trigger-box">
-                    <ul class="trigger-list">
-                        <li>"Count occurrences"</li>
-                        <li>"Most common/Least frequent"</li>
-                    </ul>
-                </div>
-                <div class="tech-steps">Build Map. Use <code>getOrDefault</code>. Foundation of Day 4.</div>
-            </div>
-
         </div>
         
         <div class="concept-card" style="margin-top:30px;">
@@ -1696,11 +1501,7 @@ return n == 1;</code></pre>
         </div>
     </div>
 
-
-   </div>
 </div>
-
-
 
 
  <div id="day5" class="day-module">
